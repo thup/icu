@@ -1,0 +1,32 @@
+{
+    "n1":{
+        "key":"n1",
+        "value":"node -v",
+        "desc":"get node version"
+    },
+    "v1":{
+        "key":"v1",
+        "value":"vue -V",
+        "desc":"get vue version"
+    },
+    "g1":{
+        "key":"g1",
+        "value":"git --version",
+        "desc":"get git version"
+    },
+    "pr":{
+        "key":"pr",
+        "value":"python",
+        "desc":"run python"
+    },
+    "pe":{
+        "key":"pe",
+        "value":"exit()",
+        "desc":"python exit"
+    },
+    "pi":{
+        "key":"pi",
+        "value":"pip -V",
+        "desc":"get git version"
+    }
+}

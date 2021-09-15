@@ -1,0 +1,13 @@
+${AnsiColor.BRIGHT_YELLOW} ${AnsiStyle.BOLD}
+             _     _
+                | |   (_)
+   ___ ___   ___| |__  _   _ __ ___ _ __
+  / __/ _ \ / __| '_ \| | | '__/ _ \ '_ \
+ | (_|  __/ \__ \ | | | | | | |  __/ | | |
+  \___\___| |___/_| |_|_| |_|  \___|_| |_|
+
+  -- 霍格沃兹测试开发 ceshiren.com
+
+  Version: ${application.version}
+  Author: tlibn
+  Date: 2021-09-10
