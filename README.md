@@ -101,7 +101,13 @@
 ![image](https://user-images.githubusercontent.com/30685788/133552498-7752e08b-3259-4ade-a5c7-52de21a4a3ee.png)
 
 
+- 添加和运行java命令
 
+![image](https://user-images.githubusercontent.com/30685788/133552831-5b31fe38-392f-4512-b4f1-5e1bed9914c7.png)
+
+- 以-方式运行
+
+![image](https://user-images.githubusercontent.com/30685788/133552920-c34031aa-5118-4ada-ab76-abe10ee543c5.png)
 
 ### 后续优化
 
