@@ -54,21 +54,27 @@ public class ConfigCommands {
             , @ShellOption(value = {"-k", "--key"}) String key
     ) {
         if("f".equalsIgnoreCase(type)){
-            String configStr = "none";
+            String configStr = "";
             if(StringUtils.isEmpty(key) || "all".equalsIgnoreCase(key)){
                 configStr = DataDb.getConfig().toJSONString();
             }else {
                 configStr = JSONObject.toJSONString(DataDb.getConfig(key));
             }
-            return "配置信息" + configStr;
+            if(StringUtils.isEmpty(configStr)){
+                configStr = "none";
+            }
+            return "配置信息 " + configStr;
         }else if("d".equalsIgnoreCase(type)){
-            String configStr = "none";
+            String configStr = "";
             if(StringUtils.isEmpty(key) || "all".equalsIgnoreCase(key)){
                 configStr = DataDb.getCommand().toJSONString();
             }else {
                 configStr = JSONObject.toJSONString(DataDb.getCommand(key));
             }
-            return "命令信息" + configStr;
+            if(StringUtils.isEmpty(configStr)){
+                configStr = "none";
+            }
+            return "命令信息 " + configStr;
         }
 
         return "查看工具配置的命令信息成功";

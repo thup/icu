@@ -29,10 +29,16 @@ public class Log {
         log.info(logStr);
     }
 
+    public static void out2(String tips, String text){
+        String logStr = "== " + tips + " == " + text;
+        System.out.println(logStr);
+    }
+
     public static void out(String tips, String text){
         String logStr = getString(tips, text);
         System.out.println(logStr);
     }
+
 
     private static String getString(String tips, String text) {
         String logStr = "== " + tips + " == " + text;

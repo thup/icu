@@ -17,6 +17,16 @@ import java.util.regex.Pattern;
 @Slf4j
 public class FileUtil {
 
+	public static boolean existsFile(String pathname) {
+		File targetFile = new File(pathname);
+		if (targetFile.exists()) {
+			return true;
+		}
+
+		return false;
+
+	}
+
 	public static String saveFile(MultipartFile file, String pathname) {
 		try {
 			File targetFile = new File(pathname);
@@ -79,14 +89,15 @@ public class FileUtil {
 	 * @param path
 	 */
 	public static void saveTextFile(String value, String path) {
-		FileWriter writer = null;
+		BufferedWriter writer = null;
 		try {
 			File file = new File(path);
 			if (!file.getParentFile().exists()) {
 				file.getParentFile().mkdirs();
 			}
 
-			writer = new FileWriter(file);
+			FileOutputStream writerStream = new FileOutputStream(file);
+			writer = new BufferedWriter(new OutputStreamWriter(writerStream, "UTF-8"));
 			writer.write(value);
 			writer.flush();
 		} catch (IOException e) {

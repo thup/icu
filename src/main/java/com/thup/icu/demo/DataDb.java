@@ -24,17 +24,16 @@ public class DataDb {
      */
     private static JSONObject configJson = new JSONObject();
 
-    static {
-        configJson.put(Constants.output
-                , new BaseDto(Constants.output
-                        ,"1",
-                        "-o --output 控制台输出配置 1 详细输出 2 简单输出"));
-    }
-
     /**
      * 命令参数
      */
     private static JSONObject commandJson = new JSONObject();
+
+
+    static {
+        getDefaultConf();
+        getDefaultCommand();
+    }
 
     public static JSONObject getConfig(){
         return configJson;
@@ -70,7 +69,7 @@ public class DataDb {
         return setCommand(key, value, null);
     }
     public static BaseDto setCommand(String key, String value, String desc){
-        return set(key, value, desc, commandJson, 1);
+        return set(key, value, desc, commandJson, 2);
     }
 
     public static BaseDto getCommand(String key){
@@ -102,7 +101,7 @@ public class DataDb {
         BaseDto baseDto = getConfig(key);
 
         if (tpye==1&&baseDto == null) {
-            System.out.println("未查到对应参数-" + key);
+            System.out.println("not found -" + key);
         }
 
         if(StringUtils.isEmpty(desc)){
@@ -124,23 +123,36 @@ public class DataDb {
 
         Log.log("util path",jarPath);
 
-        String confStr = FileUtil
-                .getText(jarPath + Constants.confFile);
+        String confStr = "";
+        String confPath = jarPath + Constants.confFile;
+        Log.log("conf path",confPath);
+        if(FileUtil.existsFile(confPath)){
+            confStr = FileUtil.getText(confPath);
+            DataDb.setConfig(JSONObject.parseObject(confStr));
+        }else {
+            confStr = DataDb.getConfig().toJSONString();
+            FileUtil.saveTextFile(confStr ,confPath);
+        }
 
-        Log.out("config info",confStr);
+       /* Log.out2("config info",confStr);
 
-        DataDb.setConfig(JSONObject.parseObject(confStr));
-        Log.out("dataDb 配置 info",DataDb.getConfig().toJSONString());
-
-
-        String commandStr = FileUtil
-                .getText(jarPath + Constants.commandFile);
-        Log.out("comman info",commandStr);
-
-        DataDb.setCommand(JSONObject.parseObject(commandStr));
-        Log.out("dataDb 命令 info",DataDb.getCommand().toJSONString());
-
+        Log.out2("dataDb 配置 info",DataDb.getConfig().toJSONString());*/
         DataDb.output = DataDb.getConfigValue(Constants.output);
+
+        String commandStr = "";
+        String commandPath = jarPath + Constants.commandFile;
+        Log.log("command path",commandPath);
+        if(FileUtil.existsFile(commandPath)){
+            commandStr = FileUtil.getText(commandPath);
+            DataDb.setCommand(JSONObject.parseObject(commandStr));
+        }else {
+            commandStr = DataDb.getCommand().toJSONString();
+            FileUtil.saveTextFile(commandStr ,commandPath);
+        }
+
+        /*Log.out2("command info",commandStr);
+
+        Log.out2("dataDb 命令 info",DataDb.getCommand().toJSONString());*/
 
     }
 
@@ -148,6 +160,33 @@ public class DataDb {
 
     public static void main(String[] args) {
 
+    }
+
+        public static void getDefaultConf() {
+
+        configJson.put(Constants.output
+                , new BaseDto(Constants.output
+                        ,"1",
+                        "-o --output 控制台输出配置 1 详细输出 2 简单输出"));
+    }
+    public static void getDefaultCommand() {
+
+        commandJson.put("n1"
+                , new BaseDto("n1"
+                        ,"node -v",
+                        "get node version"));
+        commandJson.put("v1"
+                , new BaseDto("v1"
+                        ,"vue -V",
+                        "get vue version"));
+        commandJson.put("g1"
+                , new BaseDto("g1"
+                        ,"git --version",
+                        "get git version"));
+        commandJson.put("pi"
+                , new BaseDto("pi"
+                        ,"pip -V",
+                        "get pip version"));
     }
 
 }

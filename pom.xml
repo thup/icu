@@ -87,7 +87,7 @@
     </dependencies>
 
     <build>
-        <finalName>ceshiren</finalName>
+        <finalName>ceshiren-icu</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
