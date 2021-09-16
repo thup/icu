@@ -53,6 +53,26 @@
 
 ### 示例
 
+- 新环境中的工具
+- 
+![1631763790(1)](https://user-images.githubusercontent.com/30685788/133545987-600a56dd-d059-4bee-bf8e-d7a8f8e34f45.png)
+
+- 启动
+
+![image](https://user-images.githubusercontent.com/30685788/133546280-35dd0010-9359-4a88-8305-3edd1977ba1a.png)
+
+可以看到生成了两个json文件，并自动进入了命令界面的交互模式
+
+- 查看全部的默认命令 show d all
+
+![image](https://user-images.githubusercontent.com/30685788/133546399-99f9fff4-d1ba-4a7e-a093-8b529d7cf927.png)
+
+- 查看特定命令信息(如n1) show d n1
+
+![image](https://user-images.githubusercontent.com/30685788/133546495-7fc2777c-74f0-4b55-844a-933065692871.png)
+
+
+
 
 ### 后续优化
 
