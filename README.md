@@ -8,7 +8,7 @@
 
 - 启动 java -jar ceshiren-icu.jar
 
-- 启动时默认会在工具所在目录生成command.json文件和conf.json文件
+- 启动时默认会在工具所在目录生成command.json文件和conf.json文件，如果是第二次在原目录中启动，则会自动加载修改后的json文件内容，并以修改后的json文件内容为准。
 
 1. command.json：用于工具命令存储，格式如下：
 
